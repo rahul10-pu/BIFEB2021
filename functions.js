@@ -32,12 +32,13 @@ function cc(){
 /*
 Syntax of the function:
 
-function name_of_your_function(){
+function name_of_your_function(parm1, parm2){
     Statements-1
     Statements-2
     Statements-3
     Statements-4
     Statements-5
+    return variable/data
 }
 
 */
