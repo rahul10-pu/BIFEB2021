@@ -70,8 +70,55 @@ if(condition){
     //Statement-11
     //Statement-22
     ..
+}else if(condition){
+
+}else{
+
 }
+// switch
+
+switch(expresion-1){
+    case codition-1:
+        Statement-1;
+        Statement-2;
+        Statement-3;
+        break;
+    case condition-2:
+        Statement-1;
+        Statement-2;
+        Statement-3;
+        break;
+    case condition-3:
+        Statement-1;
+        break
+    default:
+        Statement-1;
+        Statement-2;
+}
+
+
 */
+// month=2
+// switch(month){
+//     case 1:
+//         console.log("winter")
+//         console.log("Jan")
+//         break;
+      
+//     case 2:
+//         console.log("winter")
+//         console.log("Feb")
+//         break;
+     
+//     case 3:
+//         console.log("lil winter")
+//         console.log("March")
+//         break;
+      
+//     default:
+//         console.log("we have only 3 months data");
+//         console.log("only Jan, Feb and March")
+// }
 // var number=100;
 // if(number%2===0){
 //     if(number>10){
@@ -111,23 +158,76 @@ do{
     Statement-2
     ...
 }while(condition)
-*/
-count=3
-while(count<0){
-    console.log("Hello World")
-    count=count-1
-    console.log("value of count is "+count)
-    if(count==0){
-        console.log("Oops the while loop is about to end")
-    }
+
+3. for loop
+
+for(expression-1 ; expression-2 ; expression 3) {
+    Statement-1
+    Statement-2
+    ...
+    ..
 }
 
-var count=3
-do{
-    console.log("Hello World")
-    count=count-1
-    console.log("value of count is "+count)
-    if(count==0){
-        console.log("Oops the while loop is about to end")
-    }
-}while(count>0)
+*/
+// count=3
+// while(count<0){
+//     console.log("Hello World")
+//     count=count-1
+//     console.log("value of count is "+count)
+//     if(count==0){
+//         console.log("Oops the while loop is about to end")
+//     }
+// }
+
+// var count=3
+// do{
+//     console.log("Hello World")
+//     count=count-1
+//     console.log("value of count is "+count)
+//     if(count==0){
+//         console.log("Oops the while loop is about to end")
+//     }
+// }while(count>0)
+
+// count=3
+// var cc;
+// while(cc){
+//     console.log("Hi")
+// }
+
+// while(null){
+//    console.log("h1")
+// }
+
+
+// while(false){
+//     console.log("Hello")
+//  }
+
+//  while(0){
+//     console.log("h2")
+//  }
+
+//  while(1.2){
+//     console.log("h3")
+//  }
+// console.log(2/0)
+// cc=2/0
+// while(cc){
+//     console.log("h4")
+//  }
+// var i=0
+// for( ; ; ){
+//     console.log("hello X "+i)
+//     i=i+1
+// }
+// console.log("Done")
+
+
+// ternary operator
+// expression-1?expression-2:expression-3;
+
+// var marks=39
+// var result=marks<35?"fail":"pass"
+// console.log(result)
+
