@@ -30,9 +30,9 @@ function prodofNumbers(a,b){
         return a*b
 }
 var arr1=[2,3,4,5,6,7,8,9]
-// dd=arr1.map(sqr)
-// console.log(dd)
-// console.log(arr1.filter(even))
+dd=arr1.map(sqr)
+console.log(dd)
+console.log(arr1.filter(even))
 console.log(arr1.reduce(prodofNumbers))
 
 
