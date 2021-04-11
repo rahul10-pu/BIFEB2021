@@ -5,20 +5,25 @@ let users=[] //this will act as a user table(database)..later will replace this 
 export const getUsers= (req,res)=>{
     console.log("Hi")
     console.log(req.query)
-    console.log("In function call getUser()..I think this '/users' endpoint got hit.")
-    // res.send(users)
-    User.find()
-        .then(
-            (result)=>{
-                res.send(result)
-            }
-        )
-        .catch(
-            (err)=>{
-                console.log(err)
-                
-            }
-        )
+    if(req.query.age){
+        getUsersByAge(req,res)
+    }else{
+        console.log("In function call getUser()..I think this '/users' endpoint got hit.")
+        // res.send(users)
+        User.find()
+            .then(
+                (result)=>{
+                    res.send(result)
+                }
+            )
+            .catch(
+                (err)=>{
+                    console.log(err)
+                    
+                }
+            )
+    }
+   
 }
 export const getUserByID= (req,res)=>{
     console.log("In function call getUserByIs()..I think this '/users' endpoint got hit.")
@@ -77,6 +82,22 @@ export const updateUserById = (req,res) => {
         age: req.body.age,
         city: req.body.city 
     }) .then(
+        (result)=>{
+            res.send(result)
+        }
+    )
+    .catch(
+        (err)=>{
+            console.log(err)
+        }
+    )
+}
+
+const getUsersByAge = (req,res) => {
+    User.aggregate(
+        [{$sort:{age:1}}]
+    )
+    .then(
         (result)=>{
             res.send(result)
         }
