@@ -1,4 +1,4 @@
-export const tutorial= (sequelize, Sequelize)=>{
+const tutorial= (sequelize, Sequelize)=>{
     const Tutorial = sequelize.define("tutorial", {
         title:{
             type: Sequelize.STRING
@@ -12,3 +12,4 @@ export const tutorial= (sequelize, Sequelize)=>{
     })
     return Tutorial;
 }
+export default tutorial

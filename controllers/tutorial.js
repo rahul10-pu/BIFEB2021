@@ -1,4 +1,4 @@
-import db from '../models';
+import db from '../models/index.js';
 const Tutorials = db.tutorials;
 const Op = db.Sequelize.Op; //
 export const getAllTutorialsByTitle = (req, res)=>{
@@ -17,3 +17,5 @@ export const getAllTutorialsByTitle = (req, res)=>{
         )
     })
 };
+
+//since we have created the schema but that schema/table doest not exist there in database.

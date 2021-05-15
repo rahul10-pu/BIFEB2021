@@ -1,6 +1,7 @@
 import express from "express"
 import bodyParser from "body-parser"
 import userRouter from "./routes/users.js"
+import tutorialRouter from "./routes/tutorials.js"
 import mongoose from 'mongoose'
 
 const dbURI='mongodb+srv://rahul3:rahul3@cluster0.apqfl.mongodb.net/library?retryWrites=true&w=majority'
@@ -26,6 +27,7 @@ server.use(bodyParser.json())
 // server.get("/",(req,res)=> res.send("Welcome to my library"))
 var homepage=(req,res)=> res.send("Welcome to my library") //handle http://localhost:8888/
 server.use("/user",userRouter)
+server.use("/tutorial", tutorialRouter)
 server.get("/",homepage)
 
 
