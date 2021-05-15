@@ -9,6 +9,9 @@ const tutorial= (sequelize, Sequelize)=>{
         published:{
             type: Sequelize.STRING
         }
+    }, {
+    
+       timestamps:false
     })
     return Tutorial;
 }

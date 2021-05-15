@@ -19,3 +19,12 @@ export const getAllTutorialsByTitle = (req, res)=>{
 };
 
 //since we have created the schema but that schema/table doest not exist there in database.
+
+
+// first a function..
+// const tutorial = {
+//     title:"qrgq3r",
+//     description:"erbgre",
+//     published:"ewrgr"
+// }
+// Tutorials.create(tutorial) 
