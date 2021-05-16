@@ -28,3 +28,28 @@ export const getAllTutorialsByTitle = (req, res)=>{
 //     published:"ewrgr"
 // }
 // Tutorials.create(tutorial) 
+
+export const createTutorial = (req, res)=>{
+    if( req.body.description == null || req.body.title ==null){
+        res.status(400).send({
+            message: "Insufficient data..please try again"
+        })
+    }
+    const tutorial ={
+        title: req.body.title,
+        published: req.body.published ? req.body.published : false,
+        description : req.body.description
+    }
+    Tutorials.create(tutorial).then(
+        (result)=>{
+            res.status(201).send(result)
+        }
+    ).catch(
+        (err)=>{
+            res.status(500).send({
+                message:err||"Internal DB Error"
+            }    
+            )
+        }
+    )
+}

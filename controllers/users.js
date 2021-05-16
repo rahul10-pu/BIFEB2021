@@ -43,6 +43,11 @@ export const getUserByID= (req,res)=>{
 export const createUser = (req,res)=>{
     console.log("In function call createUser()..I think this '/users' endpoint got hit with post request.")
     // users.push(req.body)
+    if (req.body.name == null ||req.body.gender == null ||req.body.age == null || req.body.city == null){
+        res.status(400).send({
+            message: "all feilds are not been passed..try again"
+        })
+    }
     const user = new User({
         name: req.body.name,
         gender: req.body.gender,
@@ -57,7 +62,9 @@ export const createUser = (req,res)=>{
         )
         .catch(
             (err)=>{
-                console.log(err)
+                res.status(500).send({
+                    message:err || "Internal db error"
+                })
             }
         )
 }
