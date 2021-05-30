@@ -6,6 +6,7 @@ export const getAllTutorialsByTitle = (req, res)=>{
     var condition = title ? {title: {[Op.ilike]: `%${title}`}}: null;
 
     Tutorials.findAll({where : condition})
+    //Tutorials.findAll({where : {published:true}})
     .then(data => {
         res.send(data)
     })
@@ -17,6 +18,18 @@ export const getAllTutorialsByTitle = (req, res)=>{
         )
     })
 };
+export const getTutorialByID = (req, res)=>{
+    Tutorials.findByPk(req.params.id)
+    .then(
+        result => res.send(result)
+    )
+    .catch(
+        err => res.status(500).send(err)
+    )
+}
+
+
+
 
 //since we have created the schema but that schema/table doest not exist there in database.
 
@@ -43,6 +56,83 @@ export const createTutorial = (req, res)=>{
     Tutorials.create(tutorial).then(
         (result)=>{
             res.status(201).send(result)
+        }
+    ).catch(
+        (err)=>{
+            res.status(500).send({
+                message:err||"Internal DB Error"
+            }    
+            )
+        }
+    )
+}
+
+export const deleteTutorialByID = (req, res)=>{
+    Tutorials.destroy(
+        {where :{id:req.params.id}}
+    ).then(
+        (result)=>{
+            if(result == 1){
+                res.status(200).send({
+                    message:"Tutorial was deleted"
+                })
+            }else{
+                res.status(422).send({
+                    message:"This id doesnot exist in the table"
+                })
+            }
+        }
+    ).catch(
+        (err)=>{
+            res.status(500).send({
+                message:err||"Internal DB Error"
+            }    
+            )
+        }
+    )
+}
+
+export const deleteTutorials = (req, res)=>{
+    Tutorials.destroy(
+        {
+            where :{},
+            truncate:false
+        }
+    ).then(
+        (result)=>{
+                res.status(200).send({
+                    message:`${result} Tutorial was deleted`
+                })
+        }
+    ).catch(
+        (err)=>{
+            res.status(500).send({
+                message:err||"Internal DB Error"
+            }    
+            )
+        }
+    )
+}
+
+
+
+
+
+export const updateTutorialByID = (req, res) => {
+    Tutorials.update(req.body, {
+        where : {id : req.params.id}
+    }).then(
+
+        (result)=>{
+            if(result == 1){
+                res.status(200).send({
+                    message:"Tutorial was updated"
+                })
+            }else{
+                res.status(422).send({
+                    message:"This id doesnot exist in the table"
+                })
+            }
         }
     ).catch(
         (err)=>{
