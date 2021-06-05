@@ -5,6 +5,7 @@ import tutorialRouter from "./routes/tutorials.js"
 import mongoose from 'mongoose'
 import pgdb from './models/index.js';
 import cors from 'cors';
+import {authenticate} from './routes/auth.routes.js'
 
 var corsOptions = {
     origin: "http://localhost:8080"
@@ -65,8 +66,10 @@ server.use(bodyParser.json())
 
 // server.get("/",(req,res)=> res.send("Welcome to my library"))
 var homepage=(req,res)=> res.send("Welcome to my library") //handle http://localhost:8888/
+
 server.use("/user",userRouter)
 server.use("/tutorial", tutorialRouter)
+authenticate(server)
 server.get("/",homepage)
 
 

@@ -3,7 +3,7 @@ import Sequelize from 'sequelize';
 import tutorial from './tutorial.model.js';
 import user from './user.model.js';
 import role from './role.model.js';
-console.log(pgconfig)
+// console.log(pgconfig)
 const sequelize = new Sequelize(pgconfig.DB, pgconfig.USER, pgconfig.PASSWORD, {
     host: pgconfig.host,
     dialect : pgconfig.dialect,
@@ -29,4 +29,15 @@ const db= {
     roles : role(sequelize, Sequelize),
     
 }
+db.roles.belongsToMany(db.users,{
+    through: "user_roles",
+    foreignKey:"roleId",
+    otherKey:"userId"
+})
+db.users.belongsToMany(db.roles,{
+    through: "user_roles",
+    foreignKey:"userId",
+    otherKey:"roleId"
+})
+db.ROLES=["user", "admin", "moderator"]
 export default db 

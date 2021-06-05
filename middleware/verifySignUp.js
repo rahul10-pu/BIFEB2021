@@ -1,8 +1,8 @@
-import pgdb from './models/index.js';
+import pgdb from '../models/index.js';
 const ROLES = pgdb.ROLES
 const User = pgdb.users;
 
-checkDuplicateUsernameOrEmail = (req, res, next)=>{
+export const checkDuplicateUsernameOrEmail = (req, res, next)=>{
 // check Username 
     User.findOne({
         where:{
@@ -36,7 +36,7 @@ checkDuplicateUsernameOrEmail = (req, res, next)=>{
 
     )
 }
-checkRolesExisted = ()=>{
+export const checkRolesExisted = ()=>{
     if(req.body.roles){
         for(let i=0;i<req.body.roles.length;i++){
             if(!ROLES.includes(req.body.roles[i])){ //ROLES.includes(req.body.roles[i]) ==false
@@ -48,8 +48,4 @@ checkRolesExisted = ()=>{
         }
     }
     next();
-}
-export default verifySignUp = {
-    checkDuplicateUsernameOrEmail : checkDuplicateUsernameOrEmail,
-    checkRolesExisted : checkRolesExisted
 }

@@ -1,0 +1,17 @@
+-config
+    db config
+    auth config(secret)
+- model
+    user
+    role
+- middleware
+    verifySignup.js
+        checkDuplicateUsernameOrEmail
+        checkRolesExisted
+    authJWT.js
+        verifyToken
+        isAdmin
+    index.js(simply exposing the functionality)
+- routes
+    auth.routes.js
+    user.routes.js

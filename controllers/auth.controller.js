@@ -1,7 +1,7 @@
 import db from '../models/index.js';
-import config from '../config/auth.config.js'
+import {secret} from '../config/auth.config.js'
 import jsonwebtoken from 'jsonwebtoken'
-import bcryptjs from 'bcryptjs'
+import bcryptjs  from 'bcryptjs'
 
 const User=db.users;
 const Role=db.roles;
@@ -12,7 +12,7 @@ export const signup = (req, res)=>{
     User.create({
         username : req.body.username,
         email : req.body.email,
-        password : req.body.password    
+        password : bcryptjs.hashSync(req.body.password, 8)    
     })
     .then((user)=>{
         if(req.body.roles){
@@ -53,8 +53,9 @@ export const signin = (req, res)=>{
                 message:"Invalid Password"
             })
         }
-
-        var token=jwt.sign({id:user.id}, config.secret, {
+        //now at this point you are done with the verifying of password
+        //now you have to generate the token so that you can send it as a response
+        var token=jwt.sign({id:user.id}, secret, {
             expiresIn:86400//24 hrs
         });
         var authorities=[];

@@ -1,1 +1,1 @@
-export default secret = "mern-stack-development"
+export const secret = "mern-stack-development"
