@@ -11,7 +11,7 @@ export const checkDuplicateUsernameOrEmail = (req, res, next)=>{
     }).then(
         user => {
             if(user){
-                req.status(400).send({
+                res.status(400).send({
                     message: "Failed! Username already exist"
                 })
                 return;
@@ -23,7 +23,7 @@ export const checkDuplicateUsernameOrEmail = (req, res, next)=>{
             }).then(
                 user=>{
                     if(user){
-                        req.status(400).send({
+                        res.status(400).send({
                             message: "Failed! Username already exist"
                         })
                         return;
@@ -36,7 +36,7 @@ export const checkDuplicateUsernameOrEmail = (req, res, next)=>{
 
     )
 }
-export const checkRolesExisted = ()=>{
+export const checkRolesExisted = (req, res, next)=>{
     if(req.body.roles){
         for(let i=0;i<req.body.roles.length;i++){
             if(!ROLES.includes(req.body.roles[i])){ //ROLES.includes(req.body.roles[i]) ==false

@@ -16,7 +16,7 @@ export const signup = (req, res)=>{
     })
     .then((user)=>{
         if(req.body.roles){
-            Role.findALL({
+            Role.findAll({
                 where:{
                     name:{
                         [Op.or]:req.body.roles
