@@ -15,5 +15,5 @@ export const authenticate= (server)=>{
         checkDuplicateUsernameOrEmail,
         checkRolesExisted
     ], signup)
-    server.post("api/auth/signin", signin)
+    server.post("/api/auth/signin", signin)
 }

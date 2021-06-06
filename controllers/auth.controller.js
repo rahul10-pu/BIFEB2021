@@ -1,6 +1,6 @@
 import db from '../models/index.js';
 import {secret} from '../config/auth.config.js'
-import jsonwebtoken from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import bcryptjs  from 'bcryptjs'
 
 const User=db.users;
@@ -60,8 +60,8 @@ export const signin = (req, res)=>{
         });
         var authorities=[];
         user.getRoles().then(roles=>{
-            for(let i=0;i<role.length;i++){
-                authorities.push("ROLE_"+role[i].name.toUpperCase())
+            for(let i=0;i<roles.length;i++){
+                authorities.push("ROLE_"+roles[i].name.toUpperCase())
             }
             res.status(200).send({
                 id:user.id,

@@ -6,7 +6,7 @@ export const getAllTutorialsByTitle = (req, res)=>{
     var condition = title ? {title: {[Op.ilike]: `%${title}`}}: null;
 
     Tutorials.findAll({where : condition})
-    //Tutorials.findAll({where : {published:true}})
+    //Tutorials.findAll({where :  {published:true}})
     .then(data => {
         res.send(data)
     })
