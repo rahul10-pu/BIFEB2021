@@ -1,11 +1,12 @@
 import express from "express"
 import bodyParser from "body-parser"
 import userRouter from "./routes/users.js"
+import authRouter from "./routes/auth.routes.js"
 import tutorialRouter from "./routes/tutorials.js"
 import mongoose from 'mongoose'
 import pgdb from './models/index.js';
 import cors from 'cors';
-import {authenticate} from './routes/auth.routes.js'
+
 
 var corsOptions = {
     origin: "http://localhost:8080"
@@ -60,16 +61,27 @@ mongoose.connect(dbURI,{useNewUrlParser:true, useUnifiedTopology:true})
 const server=express()
 const PORT=8080
 server.use(cors(corsOptions));
-
+server.use((req, res, next)=>{
+    res.header(
+        "Access-Control-Allow-Headers",
+        "x-access-token",
+        "Origin",
+        "Content-Type",
+        "Accept"
+    );
+    next()
+})
+//
+//
 //parse request of content-type - application/json
 server.use(bodyParser.json())
 
 // server.get("/",(req,res)=> res.send("Welcome to my library"))
 var homepage=(req,res)=> res.send("Welcome to my library") //handle http://localhost:8888/
-
+server.use("/api/auth",authRouter)
 server.use("/user",userRouter)
 server.use("/tutorial", tutorialRouter)
-authenticate(server)
+
 server.get("/",homepage)
 
 
