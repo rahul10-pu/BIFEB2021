@@ -5,7 +5,7 @@ import Footer from "./Footer"
 function MyInfo(){
     return(
         <div>
-            <Header/>
+            <Header name={"Amey"}/>
             <Main/>
             <Footer/>
         </div>

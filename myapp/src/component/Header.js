@@ -1,8 +1,9 @@
 import React from "react"
-function Header(){
+import '../style.css'
+function Header(props){
     return(
         <div>
-            <h1>Rahul Kumar - Software Engineer</h1>
+            <h1 className="navbar">{props.name} - Software Engineer</h1>
         </div>
     )
 }
