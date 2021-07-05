@@ -3,13 +3,14 @@ import '../style.css'
 
 
 class Header extends React.Component{
-    // constructor(props){
-    //     super(props)
-    // }
+    constructor(props){
+        super(props)
+        this.state={name:props.name}
+    }
     render(){
         return(
             <div>
-                <h1 className="navbar">{this.props.name} - Software Engineer</h1>
+                <h1 className="navbar">{this.state.name} - Software Engineer</h1>
             </div>
         )
     }

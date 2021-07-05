@@ -1,20 +1,40 @@
 import React from "react"
 import ContactComp from "./ContactComp"
 import data from "./ContactData"
-function Contact(){
-    const contactComponent=data.map(user=>
-         <ContactComp contact={{
-                name:user.name,
-                phone:user.phone,
-                email:user.email,
-                imgURL:user.imgURL
-                }}/>
-    )
+class Contact extends React.Component{
+    constructor(props){
+        super(props)
+        this.contactComponent=data.map(user=>
+            <ContactComp contact={{
+                   name:user.name,
+                   phone:user.phone,
+                   email:user.email,
+                   imgURL:user.imgURL
+                   }}/>
+       )
+    }
+    render(){
+        return(
+            <div>
+                {this.contactComponent}
+            </div>
+        ) 
+    }
+}
+// function Contact(){
+//     const contactComponent=data.map(user=>
+//          <ContactComp contact={{
+//                 name:user.name,
+//                 phone:user.phone,
+//                 email:user.email,
+//                 imgURL:user.imgURL
+//                 }}/>
+//     )
     //7:46
-    return(
-        <div>
-            {contactComponent}
-        </div>
+    // return(
+    //     <div>
+    //         {contactComponent}
+    //     </div>
 
 
         // <div>
@@ -56,6 +76,6 @@ function Contact(){
         //         }}/>
         // </div>
         
-    )
-}
+//     )
+// }
 export default Contact
