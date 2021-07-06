@@ -4,7 +4,8 @@ class Form extends React.Component{
         super(props)
         this.state={
             username:"",
-            age:null
+            age:null,
+            errorMsg:""
         }
     }
     setName=(event)=>{
@@ -16,8 +17,13 @@ class Form extends React.Component{
         this.setState({age:event.target.value})
     }
     setFormData=(event)=>{
+        if(event.target.name==="age" && event.target.value<=18){
+            this.setState({errorMsg:<strong>PLease enter age above 18</strong>})
+            return
+        }
+        this.setState({errorMsg:""})
         this.setState({[event.target.name]:event.target.value})
-    }
+    }//7:28
     setForm=(event)=>{
         event.preventDefault()
         alert("Hello "+ this.state.username)
@@ -31,6 +37,7 @@ class Form extends React.Component{
 
                <p>Age:</p>
                <input type="text" name="age" onChange={this.setFormData}/>
+               {this.state.errorMsg}
                <input type="submit"/>
            </form>
         )
