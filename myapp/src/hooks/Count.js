@@ -19,13 +19,13 @@ import React,{useState} from "react"
 }*/
 function Count(){
     //var count=100
-    const [amey, digyash]=useState(100)//return 2 values
+    const [count, setCount]=useState(100)//return 2 values
     // count=100
-    //setCount - this is a function - used for setting count Value
+    //setCount - this is a function - used for setting count
     return(
         <div>
-        <p>You clicked the button {amey} times</p>  
-        <button onClick={()=>digyash(100000)}>
+        <p>You clicked the button {count} times</p>  
+        <button onClick={()=>setCount(count+1)}>
             Click Me
         </button>
       </div>
